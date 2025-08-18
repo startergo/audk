@@ -1940,6 +1940,11 @@ MainEditorKeyInput (
           // alphanumeric keys with or without shift, or arrow keys without shift
           //
           Status = FileBufferHandleInput (&KeyData.Key);
+        } else if (NoModifierState && (KeyData.Key.ScanCode == SCAN_F10)) {
+          //
+          // F10 key - Help alternative for cMP5,1 compatibility
+          //
+          Status = MainCommandDisplayHelp ();
         } else if (NoModifierState && (KeyData.Key.ScanCode >= SCAN_F1) && (KeyData.Key.ScanCode <= SCAN_F12)) {
           Status = MenuBarDispatchFunctionKey (&KeyData.Key);
         } else {
